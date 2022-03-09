@@ -6,6 +6,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -42,6 +44,18 @@ class RestaurantTest {
 
     }
 
+    @Test
+    public void order_one_item_check_price_and_add_one_more_item_check_price_and_remove_first_item_and_check_price(){
+        List<String> order = new ArrayList<String>();
+        order.add("Sweet corn soup");
+        assertEquals(restaurant.calculateOrder(order),119);
+
+        order.add("Vegetable lasagne");
+        assertEquals(restaurant.calculateOrder(order),388);
+
+        order.remove("Sweet corn soup");
+        assertEquals(restaurant.calculateOrder(order),269);
+    }
     //<<<<<<<<<<<<<<<<<<<<<<<<<OPEN/CLOSED>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 
